@@ -13,7 +13,7 @@ A modern implementation of the classic Tetris game using HTML5, JavaScript, and 
 
 ## How to Run
 
-1. Save the HTML file (e.g., `tetris.html`) to your local machine.
+1. Save the HTML file (e.g., `index.html`) to your local machine.
 2. Open the file in a modern web browser (Chrome, Firefox, Safari, or Edge recommended).
 3. Click the "Start Game" button to begin playing.
 
