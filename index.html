@@ -43,8 +43,8 @@
             <input type="checkbox" id="muteSFX" checked> Mute Sound Effects
         </label>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
     <script>
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -63,11 +63,11 @@
         camera.position.y = 10;
         camera.lookAt(0, 10, 0);
 
-        const light = new THREE.PointLight(0xffffff, 1, 100);
+        const light = new THREE.PointLight(0xffffff, 2, 100);
         light.position.set(0, 20, 20);
         scene.add(light);
 
-        const ambientLight = new THREE.AmbientLight(0x404040);
+        const ambientLight = new THREE.AmbientLight(0x808080);
         scene.add(ambientLight);
 
         const boardContainer = new THREE.Group();
@@ -238,8 +238,13 @@
             for (let y = 0; y < currentShape.shape.length; y++) {
                 for (let x = 0; x < currentShape.shape[y].length; x++) {
                     if (currentShape.shape[y][x]) {
-                        const cubeMaterial = new THREE.MeshPhongMaterial({ color: currentShape.color });
-                        const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+							const cubeMaterial = new THREE.MeshPhongMaterial({ 
+							color: currentShape.color,
+							shininess: 30,
+							emissive: currentShape.color,
+							emissiveIntensity: 0.2
+						});
+						const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
                         cube.position.set(
                             (currentPosition.x + x - gridWidth / 2) * cubeSize,
                             (gridHeight - currentPosition.y - y - 1) * cubeSize,
@@ -344,8 +349,13 @@
             for (let y = 0; y < gridHeight; y++) {
                 for (let x = 0; x < gridWidth; x++) {
                     if (grid[y][x]) {
-                        const cubeMaterial = new THREE.MeshPhongMaterial({ color: grid[y][x] });
-                        const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+						const cubeMaterial = new THREE.MeshPhongMaterial({ 
+							color: grid[y][x],
+							shininess: 30,
+							emissive: grid[y][x],
+							emissiveIntensity: 0.2
+						});
+						const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
                         cube.position.set(
                             (x - gridWidth / 2) * cubeSize,
                             (gridHeight - y - 1) * cubeSize,
