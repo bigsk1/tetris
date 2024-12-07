@@ -43,6 +43,8 @@ A modern implementation of the classic Tetris game using HTML5, JavaScript, and 
 - Three.js is used for 3D rendering.
 - The Web Audio API is used for sound generation.
 
+![tetris](tetris2.png)
+
 ## Contributing
 
 Feel free to fork this project and submit pull requests for any enhancements or bug fixes.
